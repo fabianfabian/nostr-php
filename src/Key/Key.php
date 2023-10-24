@@ -58,7 +58,7 @@ class Key
                 $str .= str_pad(dechex($item), 2, '0', STR_PAD_LEFT);
             }
         }
-        catch (Bech32Exception) {}
+        catch (Exception $e) {}
 
         return $str;
     }
@@ -108,7 +108,7 @@ class Key
             $bytes = convertBits($dec, count($dec), 8, 5);
             $str = encode($prefix, $bytes);
         }
-        catch (Bech32Exception) {}
+        catch (Exception $e) {}
 
         return $str;
     }

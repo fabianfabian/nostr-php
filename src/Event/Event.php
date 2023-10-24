@@ -74,11 +74,9 @@ class Event implements EventInterface
      */
     public static function verify(string $json): bool
     {
-        try {
-            $event = json_decode($json, flags: \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
-        } catch (\JsonException) {
-            return false;
-        }
+        $event = json_decode($json, false, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
+
+        if (!$event) { return false; }
 
         if (!$event instanceof \stdClass
             || !property_exists($event, 'id')
@@ -98,6 +96,8 @@ class Event implements EventInterface
         ) {
             return false;
         }
+
+        
 
         foreach ($event->tags as $tag) {
             if (!is_array($tag)) {
@@ -126,7 +126,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setId(string $id): static
+    public function setId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -143,7 +143,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setPublicKey(string $public_key): static
+    public function setPublicKey(string $public_key)
     {
         $this->pubkey = $public_key;
         return $this;
@@ -160,7 +160,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setSignature(string $sig): static
+    public function setSignature(string $sig)
     {
         $this->sig = $sig;
         return $this;
@@ -177,7 +177,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setKind(int $kind): static
+    public function setKind(int $kind)
     {
         $this->kind = $kind;
         return $this;
@@ -194,7 +194,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setContent(string $content): static
+    public function setContent(string $content)
     {
         $this->content = $content;
         return $this;
@@ -211,7 +211,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setTags(array $tags): static
+    public function setTags(array $tags)
     {
         $this->tags = $tags;
         return $this;
@@ -220,7 +220,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function addTag($key, $value): static
+    public function addTag($key, $value)
     {
         $this->tags[$key] = $value;
         return $this;
@@ -237,7 +237,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreatedAt(int $time): static
+    public function setCreatedAt(int $time)
     {
         $this->created_at = $time;
         return $this;
