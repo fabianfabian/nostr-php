@@ -3,11 +3,17 @@
     "description": "Nostr helper library for PHP",
     "homepage": "https://github.com/swentel/nostr-php",
     "license": "GPL-2.0-or-later",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/fabianfabian/phpecc"
+        }
+    ],
     "require": {
         "php": "^7.4",
         "ext-gmp": "*",
         "ext-xml": "*",
-        "public-square/phpecc": "^0.1.0",
+        "public-square/phpecc": "dev-php-7.4",
         "bitwasp/bech32": "^0.0.1",
         "simplito/elliptic-php": "^1.0"
     },
