@@ -12,7 +12,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setId(string $id): static;
+    public function setId(string $id);
 
     /**
      * Get the Id.
@@ -28,7 +28,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setSignature(string $signature): static;
+    public function setSignature(string $signature);
 
     /**
      * Get the signature.
@@ -44,7 +44,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setPublicKey(string $public_key): static;
+    public function setPublicKey(string $public_key);
 
     /**
      * Get the public key.
@@ -60,7 +60,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setKind(int $kind): static;
+    public function setKind(int $kind);
 
     /**
      * Returns the kind.
@@ -76,7 +76,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setContent(string $content): static;
+    public function setContent(string $content);
 
     /**
      * Get the event content.
@@ -92,7 +92,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setCreatedAt(int $time): static;
+    public function setCreatedAt(int $time);
 
     /**
      * Get the event created time.
@@ -108,7 +108,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function setTags(array $tags): static;
+    public function setTags(array $tags);
 
     /**
      * Add an event tag.
@@ -118,7 +118,7 @@ interface EventInterface
      *
      * @return $this
      */
-    public function addTag($key, $value): static;
+    public function addTag($key, $value);
 
     /**
      * Get the event tags.
